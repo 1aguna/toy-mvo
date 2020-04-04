@@ -25,7 +25,7 @@ void displayFeatures(cv::Mat& img, std::vector<cv::Point2f>& pts_t0, std::vector
     }
 
     // draw line from pts at time=1 to time=0 to show velocity
-    for (int i = 0; i < pts_t1.size(); i++) {
+    for (int i = 0; i < pts_t0.size(); i++) {
         if (i % 10 == 0) {
             cv::line(feats, pts_t0[i], pts_t1[i], CV_RGB(0,137,255));
         }
@@ -55,12 +55,14 @@ void sequenceFrames() {
     std::vector<uchar> status;
     cv::Mat trajectory = cv::Mat::zeros(600, 600, CV_8UC3);
 
+    // TODO: drawing goes out of sight
     cv::namedWindow( "Features", cv::WINDOW_AUTOSIZE );// Create a window for display.
-    cv::namedWindow( "Trajectory", cv::WINDOW_AUTOSIZE );// Create a window for display.
+    cv::namedWindow( "Trajectory", cv::WINDOW_AUTOSIZE);// Create a window for display.
 
     // TODO: change to variable name
     std::ifstream file("../dataset/poses/02.txt");
 
+    // TODO: remove branches from hot path
     for(int frameCnt = 0; frameCnt < MAX_FRAMES; frameCnt++) {
         cv::Mat r, t, mask;
 

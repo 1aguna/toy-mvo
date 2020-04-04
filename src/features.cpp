@@ -49,8 +49,11 @@ void trackFeatures( cv::Mat baseImg,
         // If its the first frame or the point went out of bounds
         // then delete those points
         bool belowZero = (pt.x < 0 || pt.y < 0);
+        bool xTooFar = abs(nextPts[i].x - basePts[i].x) > 200;
+        bool yTooFar = abs(nextPts[i].y - basePts[i].y) > 200;
+
         if (status[i] == 0 || belowZero)	{
-            if (belowZero) {
+            if (belowZero || xTooFar || yTooFar) {
                 status[i] = 0;
             }
             basePts.erase(basePts.begin() + i - correctionIndex);
@@ -74,5 +77,4 @@ void estimatePose(const std::vector<cv::Point2f>& p1,
     cv::Mat E = cv::findEssentialMat(p2, p1, focal_length, principal_point,
                             cv::RANSAC, 0.999, 1.0, mask);
     cv::recoverPose(E, p2, p1, r, t, focal_length, principal_point, mask);
-
 }
