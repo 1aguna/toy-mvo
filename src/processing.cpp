@@ -13,9 +13,7 @@ void displayFeatures(cv::Mat& img, std::vector<cv::Point2f>& pts_t0, std::vector
 
     // convert grayscale img to color in order to display
     // colored points on it
-
     cv::cvtColor(img, feats, cv::COLOR_GRAY2BGR);
-
 
     // draw circle for detected features
     for (int i = 0; i < pts_t0.size(); i++) {
@@ -30,7 +28,6 @@ void displayFeatures(cv::Mat& img, std::vector<cv::Point2f>& pts_t0, std::vector
             cv::line(feats, pts_t0[i], pts_t1[i], CV_RGB(0,137,255));
         }
     }
-
     cv::imshow("Features", feats);
 }
 
