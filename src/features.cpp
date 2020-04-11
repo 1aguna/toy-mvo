@@ -4,13 +4,6 @@ using cv::Point2f;
 using cv::KeyPoint;
 
 void detectFeatures(cv::Mat& frame, std::vector<Point2f>& pts) {
-    /**
-     * Detects features using the FAST algorithm for corner detection
-     * Params:
-     *      frame: input frame to detect features on
-     * Return:
-     *      points: vector of points containing detected features
-     * */
     std::vector<KeyPoint> keypts;
     bool suppression = true;
     int thresh = 20;
