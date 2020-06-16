@@ -5,5 +5,6 @@ The project receives frames from a forward-facing camera mounted on a car. It de
 
 Here is an example of the tracked features
 ![](image.png)
+
 And here is the estiamted trajectory
-![](traj.png =600x600)
+![](traj.png)
