@@ -83,18 +83,18 @@ CMakeFiles/mvo.dir/src/features.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvo.dir/src/features.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/laguna/CLionProjects/mvo/src/features.cpp -o CMakeFiles/mvo.dir/src/features.cpp.s
 
-CMakeFiles/mvo.dir/loadData.cpp.o: CMakeFiles/mvo.dir/flags.make
-CMakeFiles/mvo.dir/loadData.cpp.o: ../loadData.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/laguna/CLionProjects/mvo/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/mvo.dir/loadData.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mvo.dir/loadData.cpp.o -c /home/laguna/CLionProjects/mvo/loadData.cpp
+CMakeFiles/mvo.dir/src/loadData.cpp.o: CMakeFiles/mvo.dir/flags.make
+CMakeFiles/mvo.dir/src/loadData.cpp.o: ../src/loadData.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/laguna/CLionProjects/mvo/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/mvo.dir/src/loadData.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mvo.dir/src/loadData.cpp.o -c /home/laguna/CLionProjects/mvo/src/loadData.cpp
 
-CMakeFiles/mvo.dir/loadData.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvo.dir/loadData.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/laguna/CLionProjects/mvo/loadData.cpp > CMakeFiles/mvo.dir/loadData.cpp.i
+CMakeFiles/mvo.dir/src/loadData.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvo.dir/src/loadData.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/laguna/CLionProjects/mvo/src/loadData.cpp > CMakeFiles/mvo.dir/src/loadData.cpp.i
 
-CMakeFiles/mvo.dir/loadData.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvo.dir/loadData.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/laguna/CLionProjects/mvo/loadData.cpp -o CMakeFiles/mvo.dir/loadData.cpp.s
+CMakeFiles/mvo.dir/src/loadData.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvo.dir/src/loadData.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/laguna/CLionProjects/mvo/src/loadData.cpp -o CMakeFiles/mvo.dir/src/loadData.cpp.s
 
 CMakeFiles/mvo.dir/src/processing.cpp.o: CMakeFiles/mvo.dir/flags.make
 CMakeFiles/mvo.dir/src/processing.cpp.o: ../src/processing.cpp
@@ -113,7 +113,7 @@ CMakeFiles/mvo.dir/src/processing.cpp.s: cmake_force
 mvo_OBJECTS = \
 "CMakeFiles/mvo.dir/src/main.cpp.o" \
 "CMakeFiles/mvo.dir/src/features.cpp.o" \
-"CMakeFiles/mvo.dir/loadData.cpp.o" \
+"CMakeFiles/mvo.dir/src/loadData.cpp.o" \
 "CMakeFiles/mvo.dir/src/processing.cpp.o"
 
 # External object files for target mvo
@@ -121,7 +121,7 @@ mvo_EXTERNAL_OBJECTS =
 
 mvo: CMakeFiles/mvo.dir/src/main.cpp.o
 mvo: CMakeFiles/mvo.dir/src/features.cpp.o
-mvo: CMakeFiles/mvo.dir/loadData.cpp.o
+mvo: CMakeFiles/mvo.dir/src/loadData.cpp.o
 mvo: CMakeFiles/mvo.dir/src/processing.cpp.o
 mvo: CMakeFiles/mvo.dir/build.make
 mvo: /usr/lib/x86_64-linux-gnu/libopencv_shape.so.3.2.0

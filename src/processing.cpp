@@ -36,10 +36,10 @@ void displayTrajectory(cv::Mat& pose, cv::Mat& trajectory, cv::Point2f& groundTr
 
     // Calculate x,y coords from current pose
     int x = int(pose.at<double>(0)) + 300;
-    int y = int(pose.at<double>(2)) + 100;
+    int y = int(pose.at<double>(2)) + 800;
 
-    cv::circle(trajectory, cv::Point2f(x, y), 1, CV_RGB(0, 137, 255), 2);
-    cv::circle(trajectory, groundTruth, 1, CV_RGB(255, 67, 67), 2);
+    cv::circle(trajectory, cv::Point2f(x, y), 1, CV_RGB(0, 137, 255), 1);
+//    cv::circle(trajectory, groundTruth, 1, CV_RGB(255, 67, 67), 2);
     cv::imshow("Trajectory", trajectory);
 }
 
@@ -50,11 +50,12 @@ void sequenceFrames() {
     cv::Point2f groundTruth;
     std::vector<cv::Point2f> pts_t0, pts_t1;
     std::vector<uchar> status;
-    cv::Mat trajectory = cv::Mat::zeros(600, 600, CV_8UC3);
+    cv::Mat trajectory = cv::Mat::zeros(1000, 1000, CV_8UC3);
 
     // TODO: drawing goes out of sight
     cv::namedWindow( "Features", cv::WINDOW_AUTOSIZE );// Create a window for display.
-    cv::namedWindow( "Trajectory", cv::WINDOW_AUTOSIZE);// Create a window for display.
+    cv::namedWindow( "Trajectory", cv::WINDOW_GUI_NORMAL);// Create a window for display.
+//    cv::resizeWindow("Trajectory", 1600, 1600);
 
     // TODO: change to variable name
     std::ifstream file("../dataset/poses/02.txt");
@@ -94,7 +95,6 @@ void sequenceFrames() {
                     tPose = tPose + scale * (rPose * t);
                     rPose = r * rPose;
                 }
-
                 if (pts_t1.size() < MIN_FEATURE_THRESHOLD) {
                     detectFeatures(frame_t0, pts_t0);
                     trackFeatures(frame_t0, frame_t1, pts_t0, pts_t1, status);
@@ -102,7 +102,6 @@ void sequenceFrames() {
                 // Display the tracked features and the
                 // camera feed as
                 // as well as drawing the trajectory
-
                 displayFeatures(frame_t1, pts_t0, pts_t1);
                 displayTrajectory(tPose, trajectory, groundTruth);
             }

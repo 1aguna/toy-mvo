@@ -1,6 +1,6 @@
 #include <opencv2/opencv.hpp>
-#include "include/loadData.h"
-#include "include/features.h"
+#include "../include/loadData.h"
+#include "../include/features.h"
 
 cv::Point2f loadGroundTruth(const std::string &pose) {
     float x, y;

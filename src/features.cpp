@@ -4,6 +4,12 @@ using cv::Point2f;
 using cv::KeyPoint;
 
 void detectFeatures(cv::Mat& frame, std::vector<Point2f>& pts) {
+    /**
+     * Detects features in current frame
+     * Params:
+     *      pts: Empty vector for detected features
+     *      frame: Matrix representing the current image frame
+     * */
     std::vector<KeyPoint> keypts;
     bool suppression = true;
     int thresh = 20;
@@ -21,7 +27,7 @@ void trackFeatures( cv::Mat baseImg,
      * Params:
      *      baseImg: frame at time T
      *      nextImg: frame at time T + 1
-     *      basePts: The points corresponding to baseImg
+     *      basePts: The points corresponding to baseImgwinSize
      *      nextPts: The points corresponding to nextImg
      *      status:  An empty vector that LKT algorithm will fill with statuses
      * */
@@ -61,7 +67,15 @@ void estimatePose(const std::vector<cv::Point2f>& p1,
                   cv::Mat& mask,
                   cv::Mat& r,
                   cv::Mat& t) {
-
+    /**
+     * Estimates the change in position from T to T+1
+     * Params:
+     *      p1: features at time T
+     *      p2: features at time T + 1
+     *      mask: Empty matrix. 0 for outliers, else 1
+     *      r: Empty matrix to store rotation matrix
+     *      t: Empty matrix to store translation matrix
+     * */
 
     // // calibration from dataset
     cv::Point2d principal_point = cv::Point2d(607.1928, 185.2157);

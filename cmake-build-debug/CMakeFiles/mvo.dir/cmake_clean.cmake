@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/mvo.dir/loadData.cpp.o"
   "CMakeFiles/mvo.dir/src/features.cpp.o"
+  "CMakeFiles/mvo.dir/src/loadData.cpp.o"
   "CMakeFiles/mvo.dir/src/main.cpp.o"
   "CMakeFiles/mvo.dir/src/processing.cpp.o"
   "mvo"

@@ -123,33 +123,6 @@ mvo/fast:
 	$(MAKE) -f CMakeFiles/mvo.dir/build.make CMakeFiles/mvo.dir/build
 .PHONY : mvo/fast
 
-loadData.o: loadData.cpp.o
-
-.PHONY : loadData.o
-
-# target to build an object file
-loadData.cpp.o:
-	$(MAKE) -f CMakeFiles/mvo.dir/build.make CMakeFiles/mvo.dir/loadData.cpp.o
-.PHONY : loadData.cpp.o
-
-loadData.i: loadData.cpp.i
-
-.PHONY : loadData.i
-
-# target to preprocess a source file
-loadData.cpp.i:
-	$(MAKE) -f CMakeFiles/mvo.dir/build.make CMakeFiles/mvo.dir/loadData.cpp.i
-.PHONY : loadData.cpp.i
-
-loadData.s: loadData.cpp.s
-
-.PHONY : loadData.s
-
-# target to generate assembly for a file
-loadData.cpp.s:
-	$(MAKE) -f CMakeFiles/mvo.dir/build.make CMakeFiles/mvo.dir/loadData.cpp.s
-.PHONY : loadData.cpp.s
-
 src/features.o: src/features.cpp.o
 
 .PHONY : src/features.o
@@ -176,6 +149,33 @@ src/features.s: src/features.cpp.s
 src/features.cpp.s:
 	$(MAKE) -f CMakeFiles/mvo.dir/build.make CMakeFiles/mvo.dir/src/features.cpp.s
 .PHONY : src/features.cpp.s
+
+src/loadData.o: src/loadData.cpp.o
+
+.PHONY : src/loadData.o
+
+# target to build an object file
+src/loadData.cpp.o:
+	$(MAKE) -f CMakeFiles/mvo.dir/build.make CMakeFiles/mvo.dir/src/loadData.cpp.o
+.PHONY : src/loadData.cpp.o
+
+src/loadData.i: src/loadData.cpp.i
+
+.PHONY : src/loadData.i
+
+# target to preprocess a source file
+src/loadData.cpp.i:
+	$(MAKE) -f CMakeFiles/mvo.dir/build.make CMakeFiles/mvo.dir/src/loadData.cpp.i
+.PHONY : src/loadData.cpp.i
+
+src/loadData.s: src/loadData.cpp.s
+
+.PHONY : src/loadData.s
+
+# target to generate assembly for a file
+src/loadData.cpp.s:
+	$(MAKE) -f CMakeFiles/mvo.dir/build.make CMakeFiles/mvo.dir/src/loadData.cpp.s
+.PHONY : src/loadData.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -240,12 +240,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... mvo"
 	@echo "... edit_cache"
-	@echo "... loadData.o"
-	@echo "... loadData.i"
-	@echo "... loadData.s"
 	@echo "... src/features.o"
 	@echo "... src/features.i"
 	@echo "... src/features.s"
+	@echo "... src/loadData.o"
+	@echo "... src/loadData.i"
+	@echo "... src/loadData.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
