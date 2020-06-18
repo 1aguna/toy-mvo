@@ -35,15 +35,22 @@ void displayTrajectory(cv::Mat& pose, cv::Mat& trajectory, cv::Point2f& groundTr
     // Load groundTruth at frame
 
     // Calculate x,y coords from current pose
-    int x = int(pose.at<double>(0)) + 300;
+    int x = int(pose.at<double>(0)) + 400;
     int y = int(pose.at<double>(2)) + 800;
 
     cv::circle(trajectory, cv::Point2f(x, y), 1, CV_RGB(0, 137, 255), 1);
-//    cv::circle(trajectory, groundTruth, 1, CV_RGB(255, 67, 67), 2);
+    cv::circle(trajectory, groundTruth, 1, CV_RGB(255, 67, 67), 2);
     cv::imshow("Trajectory", trajectory);
 }
 
 void sequenceFrames() {
+    /**
+     * Main loop for processing sequence of frames
+     * Calculates features for in frames, and tracks
+     * how they change positions in subsequent frames.
+     * Using this transformation, calculates essential matrix
+     * and traces trajectory to visualize.
+     * */
     char fileImg[100]{};
     char file_gt[100]{};
     cv::Mat frame_t0, frame_t1, frame_t1_c, rPose, tPose;
@@ -58,18 +65,14 @@ void sequenceFrames() {
 //    cv::resizeWindow("Trajectory", 1600, 1600);
 
     // TODO: change to variable name
-    std::ifstream file("../dataset/poses/02.txt");
-
+    std::ifstream file("dataset/poses/02.txt");
     // TODO: remove branches from hot path
     for(int frameCnt = 0; frameCnt < MAX_FRAMES; frameCnt++) {
         cv::Mat r, t, mask;
 
-        sprintf(fileImg, "../dataset/sequences/02/image_0/%06d.png", frameCnt);
-        std::cout << fileImg << "\n";
-        frame_t1_c = cv::imread(fileImg);
-
-        // Make into gray images
-        cv::cvtColor(frame_t1_c, frame_t1, cv::COLOR_BGR2GRAY);
+        sprintf(fileImg, "dataset/sequences/02/image_0/%06d.png", frameCnt);
+        std::cout << fileImg << " is opened \n";
+        frame_t1 = cv::imread(fileImg, cv::IMREAD_GRAYSCALE);
 
         // Load ground truth
         std::string poseStr;
@@ -90,10 +93,11 @@ void sequenceFrames() {
                 trackFeatures(frame_t0, frame_t1, pts_t0, pts_t1, status);
                 estimatePose(pts_t0, pts_t1, mask, r, t);
                 auto scale = getScale(frameCnt);
+                assert(scale != 0);
 
                 if (scale > 0.1) {
                     tPose = tPose + scale * (rPose * t);
-                    rPose = r * rPose;
+                    rPose = rPose * r;
                 }
                 if (pts_t1.size() < MIN_FEATURE_THRESHOLD) {
                     detectFeatures(frame_t0, pts_t0);
@@ -112,35 +116,4 @@ void sequenceFrames() {
         pts_t0 = pts_t1;
         cv::waitKey(1);
     }
-}
-
-// From Avi Singh
-double getScale(int frameCnt) {
-    std::string line;
-    int i = 0;
-    std::ifstream myfile("../dataset/poses/02.txt");
-    double x =0, y=0, z = 0;
-    double x_prev, y_prev, z_prev;
-
-    if (myfile.is_open()) {
-        while (( getline (myfile,line) ) && (i<=frameCnt)) {
-            z_prev = z;
-            x_prev = x;
-            y_prev = y;
-            std::istringstream in(line);
-            for (int j=0; j<12; j++)  {
-                in >> z ;
-                if (j==7) y=z;
-                if (j==3)  x=z;
-            }
-            i++;
-        }
-        myfile.close();
-    }
-
-    else {
-        std::cout << "Unable to open file";
-        return 0;
-    }
-    return sqrt((x-x_prev)*(x-x_prev) + (y-y_prev)*(y-y_prev) + (z-z_prev)*(z-z_prev)) ;
 }
