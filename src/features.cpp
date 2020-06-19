@@ -77,11 +77,11 @@ void estimatePose(const std::vector<cv::Point2f>& p1,
      *      t: Empty matrix to store translation matrix
      * */
 
-    // // calibration from dataset
+     // calibration from dataset
     cv::Point2d principal_point = cv::Point2d(607.1928, 185.2157);
     double focal_length = 718.8560;
 
-    cv::Mat E = cv::findEssentialMat(p2, p1, focal_length, principal_point,
-                            cv::RANSAC, 0.999, 1.0, mask);
-    cv::recoverPose(E, p2, p1, r, t, focal_length, principal_point, mask);
+    cv::Mat E = cv::findEssentialMat(p1, p2, focal_length, principal_point,
+                            cv::RANSAC, 0.99, 1.0, mask);
+    cv::recoverPose(E, p1, p2, r, t, focal_length, principal_point, mask);
 }

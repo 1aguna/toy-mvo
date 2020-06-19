@@ -65,12 +65,12 @@ void sequenceFrames() {
 //    cv::resizeWindow("Trajectory", 1600, 1600);
 
     // TODO: change to variable name
-    std::ifstream file("dataset/poses/02.txt");
+    std::ifstream file(POSE_LOCATION);
     // TODO: remove branches from hot path
     for(int frameCnt = 0; frameCnt < MAX_FRAMES; frameCnt++) {
         cv::Mat r, t, mask;
 
-        sprintf(fileImg, "dataset/sequences/02/image_0/%06d.png", frameCnt);
+        sprintf(fileImg, DATA_LOCATION.c_str(), frameCnt);
         std::cout << fileImg << " is opened \n";
         frame_t1 = cv::imread(fileImg, cv::IMREAD_GRAYSCALE);
 
@@ -96,7 +96,7 @@ void sequenceFrames() {
                 assert(scale != 0);
 
                 if (scale > 0.1) {
-                    tPose = tPose + scale * (rPose * t);
+                    tPose = tPose + (scale * (rPose * t));
                     rPose = rPose * r;
                 }
                 if (pts_t1.size() < MIN_FEATURE_THRESHOLD) {

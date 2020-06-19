@@ -1,5 +1,6 @@
 #include <opencv2/opencv.hpp>
 #include "../include/loadData.h"
+#include "../include/constants.h"
 
 cv::Point2f loadGroundTruth(const std::string &pose) {
     float x, y;
@@ -15,7 +16,7 @@ cv::Point2f loadGroundTruth(const std::string &pose) {
 double getScale(int frameCnt) {
     std::string line;
     int i = 0;
-    std::ifstream myfile("dataset/poses/02.txt");
+    std::ifstream myfile(POSE_LOCATION);
     double x =0, y=0, z = 0;
     double x_prev, y_prev, z_prev;
 
