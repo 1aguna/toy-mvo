@@ -17,7 +17,7 @@
 #include <fstream>
 #include <string>
 
-#include "../include/constants.h"
+#include "constants.h"
 typedef unsigned char uchar;
 using cv::Point2f;
 using cv::KeyPoint;
