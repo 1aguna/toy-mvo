@@ -1,4 +1,5 @@
 #include <iostream>
+
 #include "../include/processing.h"
 //  - Capture images: It, It+1
 //  - Undistort the above images.
@@ -6,7 +7,8 @@
 //      - and track those features to It+1
 //      - A new detection is triggered if the number of
 //      features drop below a certain threshold.
-//  - Use Nister’s 5-point alogirthm with RANSAC to compute the essential matrix.
+//  - Use Nister’s 5-point alogirthm with RANSAC to compute the essential
+//  matrix.
 //  - Estimate R,t
 //  - from the essential matrix that was computed in the previous step.
 //  - Take scale information from some external source (like a speedometer),
@@ -15,7 +17,4 @@
 // KITTI Images are already undistorted
 // USE FAST ALG to detect features
 
-int main() {
-
-    sequenceFrames();
-}
+int main() { sequenceFrames(); }

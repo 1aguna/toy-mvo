@@ -1,7 +1,7 @@
 #pragma once
-#include "loadData.h"
-#include "features.h"
 #include "constants.h"
+#include "features.h"
+#include "loadData.h"
 
 void displayFeatures(cv::Mat&, cv::Mat&, cv::Mat&);
 void displayTrajectory(cv::Mat&, cv::Mat&, cv::Point2f&);
